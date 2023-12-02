@@ -1,4 +1,5 @@
-use std::{fs, collections::HashMap};
+use std::fs;
+use phf::phf_map;
 
 pub fn solve_one() -> String {
     // I tried a regex `^\D*?(\d*).*(\d*)\D*$` for this, but it didn't work - I guess the intermediate
@@ -28,26 +29,26 @@ pub fn solve_one_two() -> String {
         .reduce(|accum, elem| accum + elem).unwrap().to_string();
 }
 
-fn find_first_digit_or_number_word(line: &str) -> i32 {
-    let number_words: HashMap<&str, i32> = HashMap::from([
-        ("one", 1),
-        ("two", 2),
-        ("three", 3),
-        ("four", 4),
-        ("five", 5),
-        ("six", 6),
-        ("seven", 7),
-        ("eight", 8),
-        ("nine", 9)
-    ]);
+static NUMBER_WORDS: phf::Map<&str, i32> = phf_map! {
+    "one" => 1,
+    "two" => 2,
+    "three" => 3,
+    "four" => 4,
+    "five" => 5,
+    "six" => 6,
+    "seven" => 7,
+    "eight" => 8,
+    "nine" => 9
+};
 
+fn find_first_digit_or_number_word(line: &str) -> i32 {
     let line_length = line.len();
     for idx in 0..line_length {
         let char_at_idx = line.chars().nth(idx).unwrap();
         if char_at_idx.is_numeric() {
             return char_at_idx.to_string().parse::<i32>().unwrap();
         }
-        for number_word_pair in &number_words {
+        for number_word_pair in NUMBER_WORDS.entries() {
             if (idx + number_word_pair.0.len() <= line_length) && (&&line[idx..idx+number_word_pair.0.len()] == number_word_pair.0) {
                 return *number_word_pair.1;
             }
@@ -58,26 +59,13 @@ fn find_first_digit_or_number_word(line: &str) -> i32 {
 }
 
 fn find_last_digit_of_number_word(line: &str) -> i32 {
-    // Ugh, _lots_ of repetition here, but what the hell - this is a race, not a maintainable-code competition! :P
-    let number_words: HashMap<&str, i32> = HashMap::from([
-        ("one", 1),
-        ("two", 2),
-        ("three", 3),
-        ("four", 4),
-        ("five", 5),
-        ("six", 6),
-        ("seven", 7),
-        ("eight", 8),
-        ("nine", 9)
-    ]);
-
     let line_length = line.len();
     for idx in (0..line_length).rev() {
         let char_at_idx = line.chars().nth(idx).unwrap();
         if char_at_idx.is_numeric() {
             return char_at_idx.to_string().parse::<i32>().unwrap();
         }
-        for number_word_pair in &number_words {
+        for number_word_pair in NUMBER_WORDS.entries() {
             if (idx + number_word_pair.0.len() <= line_length) && (&&line[idx..idx+number_word_pair.0.len()] == number_word_pair.0) {
                 return *number_word_pair.1;
             }
