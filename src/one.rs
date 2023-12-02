@@ -89,23 +89,23 @@ fn find_last_digit_of_number_word(line: &str) -> i32 {
 
 
 fn extract_numbers_from_line(line: &str) -> (i32, i32) {
-    let mut num1 = -1;
-    let mut num2 = -1;
+    let mut num1 = None;
+    let mut num2 = None;
     for i in line.chars() {
         if i.is_numeric() {
-            if num1 == -1 {
-                num1 = i.to_string().parse::<i32>().unwrap();
+            if num1.is_none() {
+                num1 = Some(i.to_string().parse::<i32>().unwrap());
             } else {
-                num2 = i.to_string().parse::<i32>().unwrap();
+                num2 = Some(i.to_string().parse::<i32>().unwrap());
             }
         }
     }
 
     // In case there was only a single digit-string found in the overall string
-    if num2 == -1 {
+    if num2 == None {
         num2 = num1
     }
-    return (num1, num2)
+    return (num1.unwrap(), num2.unwrap())
 }
 
 #[cfg(test)]
