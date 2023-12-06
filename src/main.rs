@@ -2,7 +2,7 @@ use crate::one::{solve_one, solve_one_two};
 use crate::two::{solve_two, solve_two_two};
 use crate::three::{solve_three, solve_three_two};
 use crate::four::{solve_four, solve_four_two};
-use crate::five::solve_five;
+use crate::five::{solve_five, solve_five_two};
 
 pub mod one;
 pub mod two;
@@ -25,6 +25,7 @@ fn main() {
         "4" => solve_four(),
         "4-2" => solve_four_two(),
         "5" => solve_five(),
+        "5-2" => solve_five_two(),
         x => format!("Illegal problem number {x}")
     };
     println!("{}", output)
