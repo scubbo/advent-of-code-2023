@@ -118,7 +118,7 @@ mod tests {
         assert_eq!(process_four_two("inputs/4-test.txt"), "30")
     }
 
-    // #[test]
+    #[test]
     fn size_of_intersection_behaves_unexpectedly() {
         let set1 = HashSet::from([17, 41, 83, 48, 86]);
 

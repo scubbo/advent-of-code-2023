@@ -1,4 +1,4 @@
-use std::{fs, iter::zip, num};
+use std::{fs, iter::zip};
 
 pub fn solve_six() -> String {
     return process_six("inputs/6.txt");

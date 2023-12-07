@@ -88,3 +88,7 @@ I tried changing the type signature to `do_something_with_lines(lines: Lines<dyn
 the size for values of type `(dyn BufRead + 'static)` cannot be known at compilation time
 the trait `Sized` is not implemented for `(dyn BufRead + 'static)`
 ```
+
+### Should a function ever consume a str?
+
+My intuition is that a function should accept a borrow if the object being passed should outlive the lifetime of the function, and accept an unborrowed object if the object should be consumed (i.e. should not be accessible after the function completes). In challenge seven, I am creating a `Hand` from a string - and I know that there's no need to refer to that string again after the `Hand` is created. By the rules above, this suggests to me that I should have `Hand::new` accept a `str` (not a `&str`) - is that correct? And, if so - how would I _do_ that, since `lines()` etc. all seem to return `&str`s?
