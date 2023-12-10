@@ -1,0 +1,7 @@
+{"starting_node":"JSA","jumps_until_entering_loop":2,"node_on_entering_loop":"GPN","length_of_loop":24252,"jumps_after_entering_that_are_terminal":[24251]}
+{"starting_node":"FQA","jumps_until_entering_loop":3,"node_on_entering_loop":"KMG","length_of_loop":18726,"jumps_after_entering_that_are_terminal":[18724]}
+{"starting_node":"JSA","jumps_until_entering_loop":2,"node_on_entering_loop":"GPN","length_of_loop":24252,"jumps_after_entering_that_are_terminal":[24251]}
+{"starting_node":"GJA","jumps_until_entering_loop":2,"node_on_entering_loop":"KSX","length_of_loop":18112,"jumps_after_entering_that_are_terminal":[18111]}
+{"starting_node":"PBA","jumps_until_entering_loop":2,"node_on_entering_loop":"RRB","length_of_loop":22410,"jumps_after_entering_that_are_terminal":[22409]}
+{"starting_node":"AAA","jumps_until_entering_loop":5,"node_on_entering_loop":"MVJ","length_of_loop":21796,"jumps_after_entering_that_are_terminal":[21792]}
+{"starting_node":"NNA","jumps_until_entering_loop":3,"node_on_entering_loop":"VKD","length_of_loop":16270,"jumps_after_entering_that_are_terminal":[16268]}

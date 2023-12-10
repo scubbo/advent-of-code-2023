@@ -2,8 +2,6 @@ use std::{fs, cmp::Ordering};
 
 use itertools::Itertools;
 
-use crate::three;
-
 pub fn solve_seven() -> String {
   return process_seven("inputs/7.txt");
 }
